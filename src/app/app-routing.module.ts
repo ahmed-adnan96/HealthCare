@@ -12,20 +12,106 @@ import { DiabetesComponent } from './components/diabetes/diabetes.component';
 import { HeartComponent } from './components/heart/heart.component';
 import { PneumoniaComponent } from './components/pneumonia/pneumonia.component';
 import { MalariaComponent } from './components/malaria/malaria.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { RegisterComponent } from './components/register/register.component';
+import { BlankLayoutComponent } from './layers/blank-layout/blank-layout.component';
+import { AuthLayoutComponent } from './layers/auth-layout/auth-layout.component';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, title: 'home' },
-  { path: 'about', component: AboutComponent, title: 'about' },
-  { path: 'services', component: OurServicesComponent, title: 'services' },
-  { path: 'doctors', component: OurDoctorsComponent, title: 'doctors' },
-  { path: 'feedbacks', component: FeedbacksComponent, title: 'feedbacks' },
-  { path: 'liver', component: LiverComponent, title: 'liver' },
-  { path: 'kidney', component: KidneyComponent, title: 'kidney' },
-  { path: 'diabetes', component: DiabetesComponent, title: 'diabetes' },
-  { path: 'heart', component: HeartComponent, title: 'heart' },
-  { path: 'Pneumonia', component: PneumoniaComponent, title: 'Pneumonia' },
-  { path: 'Malaria', component: MalariaComponent, title: 'Malaria' },
+  {
+    path: '',
+    component: BlankLayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: HomeComponent,
+        title: 'home',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        title: 'about',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'services',
+        component: OurServicesComponent,
+        title: 'services',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'doctors',
+        component: OurDoctorsComponent,
+        title: 'doctors',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'feedbacks',
+        component: FeedbacksComponent,
+        title: 'feedbacks',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'logout',
+        component: LogoutComponent,
+        title: '',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'liver',
+        component: LiverComponent,
+        title: 'liver',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'kidney',
+        component: KidneyComponent,
+        title: 'kidney',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'diabetes',
+        component: DiabetesComponent,
+        title: 'diabetes',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'heart',
+        component: HeartComponent,
+        title: 'heart',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'Pneumonia',
+        component: PneumoniaComponent,
+        title: 'Pneumonia',
+        canActivate: [authGuard],
+      },
+      {
+        path: 'Malaria',
+        component: MalariaComponent,
+        title: 'Malaria',
+        canActivate: [authGuard],
+      },
+    ],
+  },
+  {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      { path: 'register', component: RegisterComponent, title: 'Register' },
+      { path: 'login', component: LoginComponent, title: 'Login' },
+    ],
+  },
+
   { path: '**', component: NotFoundComponent, title: 'notfound' },
 ];
 

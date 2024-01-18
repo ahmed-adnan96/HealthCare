@@ -21,6 +21,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PneumoniaComponent } from './components/pneumonia/pneumonia.component';
 import { MalariaComponent } from './components/malaria/malaria.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NavbarAuthComponent } from './components/navbar-auth/navbar-auth.component';
+import { BlankLayoutComponent } from './layers/blank-layout/blank-layout.component';
+import { AuthLayoutComponent } from './layers/auth-layout/auth-layout.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +45,12 @@ import { MalariaComponent } from './components/malaria/malaria.component';
     NotFoundComponent,
     PneumoniaComponent,
     MalariaComponent,
+    RegisterComponent,
+    LogoutComponent,
+    NavbarAuthComponent,
+    BlankLayoutComponent,
+    AuthLayoutComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
